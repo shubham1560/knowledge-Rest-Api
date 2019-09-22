@@ -1,17 +1,25 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from .models import Article
 from rest_framework import viewsets
-from .serializers import ArticleSerializer
-# from rest_framework.authentication import TokenAuthentication
+from .serializers import ArticleSerializer, AuthorSerializer
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
+from django.contrib.auth.models import User
 
 
 class AricleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
+    # authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)  # To restrict permission to this single model or viewSet
+
+
+class AuthorViewSet(viewsets.ModelViewSet):
+    serializer_class = AuthorSerializer
+    queryset = User.objects.all()
     # authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)  # To restrict permission to this single model or viewSet
 

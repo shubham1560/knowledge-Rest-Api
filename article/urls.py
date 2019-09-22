@@ -2,11 +2,12 @@ from django.urls import path, include
 # from . import views
 from .views import Another
 from rest_framework import routers
-from .views import AricleViewSet
+from .views import AricleViewSet, AuthorViewSet
 
 
 router = routers.DefaultRouter()
 router.register('articles', AricleViewSet)
+router.register('authors', AuthorViewSet)
 
 
 urlpatterns = [

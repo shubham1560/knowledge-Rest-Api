@@ -32,7 +32,7 @@ class Article(models.Model):
     article_body = models.CharField(max_length=2000)
     article_category = models.CharField(max_length=1, choices=CATEGORIES)
     disable_commenting = models.BooleanField(default=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
     topic = models.CharField(max_length=50)
     tags = models.OneToOneField(ArticleTag, blank=True, null=True, on_delete=models.CASCADE)
 
