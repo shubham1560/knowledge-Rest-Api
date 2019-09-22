@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class ArticleTag(models.Model):
+    tag = models.CharField(max_length=50)
+
+
 class Article(models.Model):
 
     WORKFLOW_STATES = (
@@ -30,6 +34,4 @@ class Article(models.Model):
     disable_commenting = models.BooleanField(default=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
-
-
-
+    tags = models.OneToOneField(ArticleTag, blank=True, null=True, on_delete=models.CASCADE)

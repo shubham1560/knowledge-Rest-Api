@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Article
-
+from .models import Article, ArticleTag
+# ArticleView
+#
 # Register your models here.
 
 
@@ -11,4 +12,10 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ['topic']
 
 
+class ArticleTagAdmin(admin.ModelAdmin):
+    list_display = ('id', 'tag')
+
+
 admin.site.register(Article, ArticleAdmin)
+
+admin.site.register(ArticleTag, ArticleTagAdmin)
