@@ -4,12 +4,14 @@ from django.views import View
 from .models import Article
 from rest_framework import viewsets
 from .serializers import ArticleSerializer
+from rest_framework.authentication import TokenAuthentication
 # Create your views here.
 
 
 class AricleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
+    authentication_classes = (TokenAuthentication,)
 
 # class inheriting View already has many things configured for us but it makes the program complex
 class Another(View):
