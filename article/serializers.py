@@ -25,6 +25,12 @@ class ArticleSerializer(serializers.ModelSerializer):
                   'author']
 
 
+class ArticleMiniSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ['id', 'topic', 'article_number']
+
+
 class AuthorSerializer(serializers.ModelSerializer):
     author = ArticleSerializer(many=True)
 
