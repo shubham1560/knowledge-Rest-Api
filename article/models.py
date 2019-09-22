@@ -21,8 +21,8 @@ class Article(models.Model):
     )
 
     active = models.BooleanField(default=True)
-    created_on = models.DateTimeField()
-    article_number = models.CharField(max_length=10)
+    created_on = models.DateTimeField(auto_now=True)
+    article_number = models.CharField(max_length=10, unique=True)
     parent_article = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     workflow_state = models.CharField(max_length=20, choices=WORKFLOW_STATES)
     article_body = models.CharField(max_length=2000)
@@ -30,3 +30,6 @@ class Article(models.Model):
     disable_commenting = models.BooleanField(default=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
+
+
+
