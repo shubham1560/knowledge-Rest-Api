@@ -17,7 +17,7 @@ class ArticleUseSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     tags = ArticleTagSerializer(many=False)  # should not conflict with field names in serializer
     articleUse = ArticleUseSerializer(many=True)
-
+    
     class Meta:
         model = Article
-        fields = ['id', 'topic', 'article_number', 'article_body', 'workflow_state', 'tags', 'articleUse']
+        fields = ['id', 'topic', 'article_number', 'article_body', 'workflow_state', 'tags', 'articleUse', 'child']

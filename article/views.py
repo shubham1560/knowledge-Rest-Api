@@ -4,7 +4,7 @@ from django.views import View
 from .models import Article
 from rest_framework import viewsets
 from .serializers import ArticleSerializer
-from rest_framework.authentication import TokenAuthentication
+# from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
