@@ -10,10 +10,11 @@ class Another(View):
 
     def get(self, request):
         articles = Article.objects.all()
+        article_by_id = Article.objects.get(id=2)
         for article in articles:
             print(article.author)
             print(article.article_number)
-        return HttpResponse("Working with "+str(len(articles))+" articles")
+        return HttpResponse("Working with "+ article_by_id.article_number+" article")
 
 
 def first(request):
