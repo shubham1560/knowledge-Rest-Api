@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, ArticleTag
+from .models import Article, ArticleTag, ArticleUse
 # ArticleView
 #
 # Register your models here.
@@ -16,6 +16,10 @@ class ArticleTagAdmin(admin.ModelAdmin):
     list_display = ('id', 'tag')
 
 
-admin.site.register(Article, ArticleAdmin)
+class ArticleUseAdmin(admin.ModelAdmin):
+    list_display = ('id', 'commented_by', 'commented_article')
 
+
+admin.site.register(Article, ArticleAdmin)
 admin.site.register(ArticleTag, ArticleTagAdmin)
+admin.site.register(ArticleUse, ArticleUseAdmin)

@@ -35,3 +35,10 @@ class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
     tags = models.OneToOneField(ArticleTag, blank=True, null=True, on_delete=models.CASCADE)
+
+
+class ArticleUse(models.Model):
+    comment = models.CharField(max_length=100)
+    commented_article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='articleUse')
+    commented_by = models.ForeignKey(User, on_delete=models.CASCADE, )
+    created_on = models.DateTimeField(auto_now=True)

@@ -12,8 +12,8 @@ from rest_framework.permissions import IsAuthenticated
 class AricleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
-    authentication_classes = (TokenAuthentication,)
-    # permission_classes = (IsAuthenticated,)  # To restrict permission to this single model or viewSet
+    # authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)  # To restrict permission to this single model or viewSet
 
 # class inheriting View already has many things configured for us but it makes the program complex
 
